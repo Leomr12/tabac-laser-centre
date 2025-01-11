@@ -27,7 +27,10 @@
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
   }
-
+.text-gray-700 {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0) !important;
+}
   * {
     @apply border-border;
   }
