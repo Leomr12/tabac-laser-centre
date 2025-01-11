@@ -6,7 +6,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="text-2xl font-bold text-primary">
-            <img src="/public/centre-tabac-logo.png" width="300px"></img>
+            <img src="/centre-tabac-logo.png" width="300px"></img>
           </Link>
           
           <nav className="hidden md:flex items-center space-x-8">
