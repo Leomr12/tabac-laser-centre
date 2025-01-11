@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
 import FeatureCard from "../components/FeatureCard";
 import ArgumentCard from "../components/ArgumentCard";
-import { Award, Shield, UserCheck, Smile, Heart, Check, Activity, Coins, Sun, Lungs, Users } from "lucide-react";
+import { Award, Shield, UserCheck, Smile, Heart, Check, Activity, Coins, Sun, Users } from "lucide-react";
 
 const Index = () => {
   return (
@@ -124,7 +124,7 @@ const Index = () => {
                 <ArgumentCard icon={Activity} title="Amélioration de la santé" />
                 <ArgumentCard icon={Coins} title="Économies financières" />
                 <ArgumentCard icon={Sun} title="Meilleure qualité de vie" />
-                <ArgumentCard icon={Lungs} title="Prévention des maladies respiratoires" />
+                <ArgumentCard icon={Heart} title="Prévention des maladies respiratoires" />
                 <ArgumentCard icon={Users} title="Impact positif sur votre entourage" />
               </div>
             </div>
