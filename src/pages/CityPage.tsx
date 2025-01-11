@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 const CityPage = () => {
   const { city } = useParams();
@@ -22,6 +23,31 @@ const CityPage = () => {
       const response = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${city}&type=municipality&limit=1`);
       const data = await response.json();
       return data.features[0]?.properties?.postcode || "XXXXX";
+    },
+  });
+
+  // Fetch nearby cities
+  const { data: nearbyCities = [] } = useQuery({
+    queryKey: ['nearbyCities', city],
+    queryFn: async () => {
+      // First get coordinates of the current city
+      const cityResponse = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${city}&type=municipality&limit=1`);
+      const cityData = await cityResponse.json();
+      
+      if (!cityData.features?.[0]) return [];
+      
+      const [lon, lat] = cityData.features[0].geometry.coordinates;
+      
+      // Then get cities around these coordinates
+      const nearbyResponse = await fetch(
+        `https://api-adresse.data.gouv.fr/search/?lat=${lat}&lon=${lon}&type=municipality&limit=12`
+      );
+      const nearbyData = await nearbyResponse.json();
+      
+      return nearbyData.features
+        .map(f => f.properties.city)
+        .filter(c => c.toLowerCase() !== city?.toLowerCase()) // Remove current city
+        .slice(0, 12); // Ensure we only get 12 cities
     },
   });
 
@@ -191,6 +217,33 @@ const CityPage = () => {
                     </Button>
                   </CardContent>
                 </Card>
+
+                {/* Nearby Centers Section */}
+                <section className="py-16 bg-gray-50">
+                  <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold mb-8 text-center">
+                      Les autres Centres Tabac Laser à proximité de chez-vous
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {Array.from({ length: 3 }).map((_, colIndex) => (
+                        <div key={colIndex} className="space-y-4">
+                          {nearbyCities
+                            .slice(colIndex * 4, (colIndex + 1) * 4)
+                            .map((nearbyCity, index) => (
+                              <Link
+                                key={index}
+                                to={`/centre-anti-tabac-laser/${nearbyCity.toLowerCase().replace(/ /g, '-')}`}
+                                className="block text-primary hover:underline"
+                              >
+                                Centre Tabac Laser à {nearbyCity}
+                              </Link>
+                            ))}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </section>
+
               </div>
             </div>
           </section>
