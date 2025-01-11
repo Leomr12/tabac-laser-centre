@@ -55,7 +55,7 @@ const Index = () => {
                 </div>
                 <div className="md:w-1/2">
                   <img
-                    src="/public/Sevrage-tabagique-Arret-Tabac (2).png"
+                    src="/Sevrage-tabagique-Arret-Tabac (2).png"
                     alt="Sevrage tabagique - Stop Tabac Laser - Centre Tabac Laser"
                     className="rounded-lg shadow-custom"
                   />
