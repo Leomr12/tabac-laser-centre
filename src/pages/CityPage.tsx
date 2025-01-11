@@ -43,10 +43,10 @@ const CityPage = () => {
   return (
     <>
       <Helmet>
-        <title>{`Centre Tabac Laser ${capitalizedCity} ${postalCode} - Arrêter de fumer`}</title>
+        <title>{`Centre Tabac Laser ${capitalizedCity} (${postalCode}) - Arrêter de fumer`}</title>
         <meta
           name="description"
-          content={`Votre Centre Tabac Laser de ${capitalizedCity} ${postalCode} vous accompagne pour arrêter de fumer. Arrêtez de fumer en 1 séance ! Dites Stop au Tabac.`}
+          content={`Votre Centre Tabac Laser de ${capitalizedCity} (${postalCode}) vous accompagne pour arrêter de fumer. Arrêtez de fumer en 1 séance ! Dites Stop au Tabac.`}
         />
         <script type="application/ld+json">
           {JSON.stringify(jsonLd)}
