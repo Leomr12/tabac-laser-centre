@@ -57,7 +57,6 @@ const Index = () => {
                   <img
                     src="/Sevrage-tabagique-Arret-Tabac.png"
                     alt="Sevrage tabagique - Stop Tabac Laser - Centre Tabac Laser"
-                    className="rounded-lg shadow-custom"
                   />
                 </div>
               </div>
@@ -81,9 +80,8 @@ const Index = () => {
                 </div>
                 <div className="md:w-1/2">
                   <img
-                    src="/placeholder.svg"
-                    alt="Méthode laser"
-                    className="rounded-lg shadow-custom"
+                   src="/Sevrage-tabagique-Arret-Tabac.png"
+                    alt="Arrêter la cigarette - Centre Tabac Laser Arrêt Tabac"
                   />
                 </div>
               </div>
@@ -147,9 +145,8 @@ const Index = () => {
                 </div>
                 <div className="md:w-1/2">
                   <img
-                    src="/placeholder.svg"
-                    alt="Séance de sevrage"
-                    className="rounded-lg shadow-custom"
+                    src="/Sevrage-tabagique-Arret-Tabac.png"
+                    alt="Centre anti-tabac laser - Stop Tabac addiction"
                   />
                 </div>
               </div>
