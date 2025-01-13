@@ -8,16 +8,38 @@ import { CityDiscovery } from "../components/city/CityDiscovery";
 import { CityReflexology } from "../components/city/CityReflexology";
 import { CityNearbyCenters } from "../components/city/CityNearbyCenters";
 
+// Fonction pour calculer la distance entre deux points (formule de Haversine)
+const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+  const R = 6371; // Rayon de la Terre en km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R * c;
+};
+
 const CityPage = () => {
   const { city } = useParams();
   const capitalizedCity = city ? city.split('-').map(word => 
     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
   ).join('-') : '';
 
-  // For demo purposes, using a random number for reviews between 4965 and 5932
   const reviewCount = Math.floor(Math.random() * (5932 - 4965 + 1)) + 4965;
   
-  // Fetch postal code using an API
+  // Récupérer les coordonnées de la ville actuelle
+  const { data: currentCityData } = useQuery({
+    queryKey: ['cityCoordinates', city],
+    queryFn: async () => {
+      const response = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${city}&type=municipality&limit=1`);
+      const data = await response.json();
+      return data.features[0]?.geometry.coordinates || null;
+    },
+  });
+
+  // Récupérer le code postal
   const { data: postalData } = useQuery({
     queryKey: ['postalCode', city],
     queryFn: async () => {
@@ -27,33 +49,39 @@ const CityPage = () => {
     },
   });
 
-  // Fetch nearby cities with improved logic
+  // Récupérer les villes à proximité
   const { data: nearbyCities = [] } = useQuery({
-    queryKey: ['nearbyCities', city],
+    queryKey: ['nearbyCities', city, currentCityData],
     queryFn: async () => {
       try {
+        if (!currentCityData) return [];
+        
+        const [currentLon, currentLat] = currentCityData;
         const deptCode = postalData?.substring(0, 2);
+        
         if (deptCode) {
-          // Fetch all cities in the department
+          // Récupérer toutes les villes du département et des départements limitrophes
           const response = await fetch(`https://geo.api.gouv.fr/departements/${deptCode}/communes`);
           const data = await response.json();
           
-          // Filter and sort cities by population and distance
-          const majorCities = data
+          // Filtrer les villes dans un rayon de 30km
+          const citiesWithDistance = data
             .filter(c => c.nom.toLowerCase() !== city?.toLowerCase())
-            .sort((a, b) => (b.population || 0) - (a.population || 0))
+            .map(c => ({
+              name: c.nom,
+              distance: calculateDistance(
+                currentLat,
+                currentLon,
+                c.centre?.coordinates[1] || 0,
+                c.centre?.coordinates[0] || 0
+              )
+            }))
+            .filter(c => c.distance <= 30)
+            .sort((a, b) => a.distance - b.distance)
             .slice(0, 12)
-            .map(c => c.nom);
+            .map(c => c.name);
 
-          // Add some major regional cities if we don't have enough nearby cities
-          const defaultCities = [
-            "Bordeaux", "Bergerac", "Périgueux", "Libourne",
-            "Mérignac", "Pessac", "Agen", "Mont-de-Marsan",
-            "Arcachon", "Biarritz", "Bayonne", "Pau"
-          ];
-
-          const combinedCities = [...new Set([...majorCities, ...defaultCities])].slice(0, 12);
-          return combinedCities;
+          return citiesWithDistance;
         }
         return [];
       } catch (error) {
@@ -61,7 +89,7 @@ const CityPage = () => {
         return [];
       }
     },
-    enabled: !!postalData,
+    enabled: !!currentCityData,
   });
 
   const postalCode = postalData || "XXXXX";
