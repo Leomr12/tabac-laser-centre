@@ -2,45 +2,46 @@ import { Helmet } from "react-helmet";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const DecouvrirMethode = () => {
   const mutuellesList = [
-    { name: "Abela", advantage: "20€/séance, plafond 150€/an" },
-    { name: "Adrea", advantage: "75€/an, plafond 4 séances/an" },
-    { name: "Aesio", advantage: "75€/an, plafond 4 séances/an" },
-    { name: "Ag2r-La Mondiale", advantage: "200€/an via le pack \"prévention bien-être\"" },
-    { name: "AIO Santé", advantage: "150€/an, plafond 150€" },
-    { name: "ALPTIS", advantage: "25€/séance, maximum 5 séances/an, option \"Renfort bien-être\"" },
-    { name: "Amavie", advantage: "35€/séance, maximum 10 séances/an" },
-    { name: "April", advantage: "Forfaits progressifs, jusqu'à 240€/an à partir de la 5e année" },
-    { name: "ASAF", advantage: "Jusqu'à 450€/an selon les contrats" },
+    { name: "Abela", advantage: "20 €/séance, plafond 150 €/an" },
+    { name: "Adrea", advantage: "75 €/an, plafond 4 séances/an" },
+    { name: "Aesio", advantage: "75 €/an, plafond 4 séances/an" },
+    { name: "Ag2r-La Mondiale", advantage: "200 €/an via le pack \"prévention bien-être\"" },
+    { name: "AIO Santé", advantage: "150 €/an, plafond 150 €" },
+    { name: "ALPTIS", advantage: "25 €/séance, maximum 5 séances/an, option \"Renfort bien-être\"" },
+    { name: "Amavie", advantage: "35 €/séance, maximum 10 séances/an" },
+    { name: "April", advantage: "Forfaits progressifs, jusqu'à 240 €/an à partir de la 5e année" },
+    { name: "ASAF", advantage: "Jusqu'à 450 €/an selon les contrats" },
     { name: "Assurema", advantage: "Contrat Protect Santé" },
-    { name: "Cegema", advantage: "30€/séance" },
+    { name: "Cegema", advantage: "30 €/séance" },
     { name: "Choralis", advantage: "Plafond 3 séances/an" },
-    { name: "CNM Santé", advantage: "60€/séance, plafond 300€/an" },
-    { name: "Cocoon Génération", advantage: "30€/séance, plafond 5 séances/an ou 350€/an" },
+    { name: "CNM Santé", advantage: "60 €/séance, plafond 300 €/an" },
+    { name: "Cocoon Génération", advantage: "30 €/séance, plafond 5 séances/an ou 350 €/an" },
     { name: "Gras Savoye", advantage: "Avantages selon les contrats (particulier ou entreprise)" },
     { name: "Harmonie Mutuelle", advantage: "Oui pour certains contrats entreprise" },
     { name: "HENNER", advantage: "Oui pour les contrats d'entreprise et TNS" },
-    { name: "La Mutuelle Générale", advantage: "10€ à 30€/séance, plafond 3 fois/an selon contrat" },
-    { name: "M comme Mutuelle", advantage: "Jusqu'à 40€/séance, 2 fois/an" },
+    { name: "La Mutuelle Générale", advantage: "10 € à 30 €/séance, plafond 3 fois/an selon contrat" },
+    { name: "M comme Mutuelle", advantage: "Jusqu'à 40 €/séance, 2 fois/an" },
     { name: "Matmut", advantage: "Médecines douces (réflexologie incluse) selon contrat" },
-    { name: "MFIF", advantage: "Jusqu'à 450€/an selon garantie" },
-    { name: "MGP", advantage: "Forfaits de 40€ à 120€/an selon le plan choisi" },
+    { name: "MFIF", advantage: "Jusqu'à 450 €/an selon garantie" },
+    { name: "MGP", advantage: "Forfaits de 40 € à 120 €/an selon le plan choisi" },
     { name: "MIE", advantage: "Forfait médecine douce, détails selon la réglementation" },
-    { name: "Miltis", advantage: "30€/séance, plafond 3 séances/an" },
+    { name: "Miltis", advantage: "30 €/séance, plafond 3 séances/an" },
     { name: "MIP", advantage: "Avantages selon contrat" },
-    { name: "Muta Santé", advantage: "40€/séance, plafond 2 séances/an" },
+    { name: "Muta Santé", advantage: "40 €/séance, plafond 2 séances/an" },
     { name: "Ociane", advantage: "Oui selon contrat" },
-    { name: "Pavillon prévoyance", advantage: "30€/séance, plafond 10 séances/an" },
-    { name: "Prévoir", advantage: "120€/an, avec 120€ supplémentaires après 4 ans" },
+    { name: "Pavillon prévoyance", advantage: "30 €/séance, plafond 10 séances/an" },
+    { name: "Prévoir", advantage: "120 €/an, avec 120 € supplémentaires après 4 ans" },
     { name: "ProBTP", advantage: "Avantages selon contrat négocié par l'entreprise" },
-    { name: "Smatis", advantage: "25€ à 40€/séance, 2 à 4 séances/an" },
-    { name: "SPVIE Santé", advantage: "50€/séance, plafond 70 à 250€/an" },
-    { name: "Swiss Life", advantage: "55€/séance, plafond 5 séances/an" },
-    { name: "Solimut", advantage: "25€/séance, plafond 3 séances/an selon contrat" },
-    { name: "Veralis Assurance Santé", advantage: "40€ à 120€/an selon contrat" },
-    { name: "VIVINTER", advantage: "Plafond 415€/an" },
+    { name: "Smatis", advantage: "25 € à 40 €/séance, 2 à 4 séances/an" },
+    { name: "SPVIE Santé", advantage: "50 €/séance, plafond 70 à 250 €/an" },
+    { name: "Swiss Life", advantage: "55 €/séance, plafond 5 séances/an" },
+    { name: "Solimut", advantage: "25 €/séance, plafond 3 séances/an selon contrat" },
+    { name: "Veralis Assurance Santé", advantage: "40 € à 120 €/an selon contrat" },
+    { name: "VIVINTER", advantage: "Plafond 415 €/an" },
   ];
 
   return (
@@ -141,11 +142,18 @@ const DecouvrirMethode = () => {
                   <Card key={index} className="hover:shadow-lg transition-shadow">
                     <CardContent className="pt-6">
                       <h3 className="font-bold text-lg mb-2">{mutuelle.name}</h3>
-                      <p className="text-gray-700 text-sm">{mutuelle.advantage}</p>
+                      <p className="text-gray-700 text-sm font-['Arial']">{mutuelle.advantage}</p>
                     </CardContent>
                   </Card>
                 ))}
               </div>
+              
+              <div className="mt-12 flex justify-center">
+                <Button asChild className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg text-lg">
+                  <a href="/prendre-rendez-vous">Prendre rendez-vous</a>
+                </Button>
+              </div>
+
               <p className="text-xs text-gray-500 text-center mt-8 max-w-2xl mx-auto">
                 Cette liste n'est pas exhaustive et ne doit pas être utilisée comme une référence absolue. Les programmes et avantages des mutuelles évoluent régulièrement, et les informations peuvent varier selon les contrats ou les régions. Nous vous recommandons vivement de contacter directement votre mutuelle pour obtenir des informations à jour et adaptées à votre situation personnelle.
               </p>
