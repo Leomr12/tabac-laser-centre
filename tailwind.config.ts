@@ -50,6 +50,15 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      keyframes: {
+        "scroll-x": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        "scroll-x": "scroll-x 30s linear infinite",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

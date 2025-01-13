@@ -5,6 +5,8 @@ import SearchBar from "../components/SearchBar";
 import FeatureCard from "../components/FeatureCard";
 import ArgumentCard from "../components/ArgumentCard";
 import { Award, Shield, UserCheck, Smile, Heart, Check, Activity, Coins, Sun, Users } from "lucide-react";
+import CookieBanner from "../components/CookieBanner";
+import ScrollingBanner from "../components/ScrollingBanner";
 
 const Index = () => {
   return (
@@ -19,6 +21,7 @@ const Index = () => {
 
       <div className="min-h-screen flex flex-col">
         <Header />
+        <CookieBanner />
 
         <main className="flex-grow">
           {/* Hero Section */}
@@ -33,6 +36,8 @@ const Index = () => {
               <SearchBar />
             </div>
           </section>
+
+          <ScrollingBanner />
 
           {/* Main Content */}
           <section className="py-16">
