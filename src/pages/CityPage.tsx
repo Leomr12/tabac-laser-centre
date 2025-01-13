@@ -26,29 +26,47 @@ const CityPage = () => {
     },
   });
 
-  // Fetch nearby cities
+  // Fetch nearby cities with improved error handling and logging
   const { data: nearbyCities = [] } = useQuery({
     queryKey: ['nearbyCities', city],
     queryFn: async () => {
-      // First get coordinates of the current city
-      const cityResponse = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${city}&type=municipality&limit=1`);
-      const cityData = await cityResponse.json();
-      
-      if (!cityData.features?.[0]) return [];
-      
-      const [lon, lat] = cityData.features[0].geometry.coordinates;
-      
-      // Then get cities around these coordinates
-      const nearbyResponse = await fetch(
-        `https://api-adresse.data.gouv.fr/search/?lat=${lat}&lon=${lon}&type=municipality&limit=12`
-      );
-      const nearbyData = await nearbyResponse.json();
-      
-      return nearbyData.features
-        .map(f => f.properties.city)
-        .filter(c => c.toLowerCase() !== city?.toLowerCase()) // Remove current city
-        .slice(0, 12); // Ensure we only get 12 cities
+      try {
+        // First get coordinates of the current city
+        const cityResponse = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${city}&type=municipality&limit=1`);
+        const cityData = await cityResponse.json();
+        
+        console.log('City data:', cityData); // Debug log
+        
+        if (!cityData.features?.[0]) {
+          console.warn('No coordinates found for city:', city);
+          return [];
+        }
+        
+        const [lon, lat] = cityData.features[0].geometry.coordinates;
+        
+        // Then get cities around these coordinates with increased radius
+        const nearbyResponse = await fetch(
+          `https://api-adresse.data.gouv.fr/search/?lat=${lat}&lon=${lon}&type=municipality&limit=20`
+        );
+        const nearbyData = await nearbyResponse.json();
+        
+        console.log('Nearby cities data:', nearbyData); // Debug log
+        
+        const cities = nearbyData.features
+          .map(f => f.properties.city)
+          .filter(c => c && c.toLowerCase() !== city?.toLowerCase()) // Remove current city and null values
+          .filter((c, index, self) => self.indexOf(c) === index) // Remove duplicates
+          .slice(0, 12); // Ensure we only get 12 cities
+        
+        console.log('Filtered nearby cities:', cities); // Debug log
+        
+        return cities;
+      } catch (error) {
+        console.error('Error fetching nearby cities:', error);
+        return [];
+      }
     },
+    staleTime: 1000 * 60 * 5, // Cache for 5 minutes
   });
 
   const postalCode = postalData || "XXXXX";
