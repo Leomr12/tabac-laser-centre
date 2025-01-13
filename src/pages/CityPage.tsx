@@ -13,10 +13,8 @@ const CityPage = () => {
     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
   ).join('-') : '';
 
-  // For demo purposes, using a random number for reviews between 4965 and 5932
   const reviewCount = Math.floor(Math.random() * (5932 - 4965 + 1)) + 4965;
   
-  // Fetch postal code using an API
   const { data: postalData } = useQuery({
     queryKey: ['postalCode', city],
     queryFn: async () => {
@@ -24,18 +22,16 @@ const CityPage = () => {
       const data = await response.json();
       return data.features[0]?.properties?.postcode || "XXXXX";
     },
+    staleTime: 1000 * 60 * 60, // Cache for 1 hour
+    cacheTime: 1000 * 60 * 60 * 24, // Keep in cache for 24 hours
   });
 
-  // Fetch nearby cities with improved error handling and logging
   const { data: nearbyCities = [] } = useQuery({
     queryKey: ['nearbyCities', city],
     queryFn: async () => {
       try {
-        // First get coordinates of the current city
         const cityResponse = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${city}&type=municipality&limit=1`);
         const cityData = await cityResponse.json();
-        
-        console.log('City data:', cityData); // Debug log
         
         if (!cityData.features?.[0]) {
           console.warn('No coordinates found for city:', city);
@@ -44,29 +40,23 @@ const CityPage = () => {
         
         const [lon, lat] = cityData.features[0].geometry.coordinates;
         
-        // Then get cities around these coordinates with increased radius
         const nearbyResponse = await fetch(
           `https://api-adresse.data.gouv.fr/search/?lat=${lat}&lon=${lon}&type=municipality&limit=20`
         );
         const nearbyData = await nearbyResponse.json();
         
-        console.log('Nearby cities data:', nearbyData); // Debug log
-        
-        const cities = nearbyData.features
+        return nearbyData.features
           .map(f => f.properties.city)
-          .filter(c => c && c.toLowerCase() !== city?.toLowerCase()) // Remove current city and null values
-          .filter((c, index, self) => self.indexOf(c) === index) // Remove duplicates
-          .slice(0, 12); // Ensure we only get 12 cities
-        
-        console.log('Filtered nearby cities:', cities); // Debug log
-        
-        return cities;
+          .filter(c => c && c.toLowerCase() !== city?.toLowerCase())
+          .filter((c, index, self) => self.indexOf(c) === index)
+          .slice(0, 12);
       } catch (error) {
         console.error('Error fetching nearby cities:', error);
         return [];
       }
     },
-    staleTime: 1000 * 60 * 5, // Cache for 5 minutes
+    staleTime: 1000 * 60 * 60, // Cache for 1 hour
+    cacheTime: 1000 * 60 * 60 * 24, // Keep in cache for 24 hours
   });
 
   const postalCode = postalData || "XXXXX";
@@ -95,13 +85,17 @@ const CityPage = () => {
         <script type="application/ld+json">
           {JSON.stringify(jsonLd)}
         </script>
+        {/* Preload critical images */}
+        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1483058712412-4245e9b90334" />
+        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952" />
+        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1721322800607-8c38375eef04" />
+        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1496307653780-42ee777d4833" />
       </Helmet>
 
       <div className="min-h-screen flex flex-col">
         <Header />
 
         <main className="flex-grow">
-          {/* Hero Section */}
           <section className="bg-primary text-white py-16">
             <div className="container mx-auto px-4">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -121,11 +115,9 @@ const CityPage = () => {
             </div>
           </section>
 
-          {/* Main Content */}
           <section className="py-16">
             <div className="container mx-auto px-4">
               <div className="space-y-12">
-                {/* Discovery Section */}
                 <Card className="overflow-hidden">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="p-8">
@@ -151,6 +143,9 @@ const CityPage = () => {
                         src="https://images.unsplash.com/photo-1483058712412-4245e9b90334"
                         alt="Centre anti-tabac moderne"
                         className="object-cover w-full h-full"
+                        loading="eager"
+                        decoding="async"
+                        fetchPriority="high"
                       />
                     </div>
                   </div>
@@ -261,7 +256,6 @@ const CityPage = () => {
                     </div>
                   </div>
                 </section>
-
               </div>
             </div>
           </section>
