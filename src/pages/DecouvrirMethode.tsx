@@ -6,51 +6,51 @@ import { Button } from "@/components/ui/button";
 
 const DecouvrirMethode = () => {
   const mutuellesList = [
-    { name: "Abela", advantage: "20 €/séance, plafond 150 €/an" },
-    { name: "Adrea", advantage: "75 €/an, plafond 4 séances/an" },
-    { name: "Aesio", advantage: "75 €/an, plafond 4 séances/an" },
-    { name: "Ag2r-La Mondiale", advantage: "200 €/an via le pack \"prévention bien-être\"" },
-    { name: "AIO Santé", advantage: "150 €/an, plafond 150 €" },
-    { name: "ALPTIS", advantage: "25 €/séance, maximum 5 séances/an, option \"Renfort bien-être\"" },
-    { name: "Amavie", advantage: "35 €/séance, maximum 10 séances/an" },
-    { name: "April", advantage: "Forfaits progressifs, jusqu'à 240 €/an à partir de la 5e année" },
-    { name: "ASAF", advantage: "Jusqu'à 450 €/an selon les contrats" },
+    { name: "Abela", advantage: "20 € / séance, plafond 150 € / an" },
+    { name: "Adrea", advantage: "75 € / an, plafond 4 séances / an" },
+    { name: "Aesio", advantage: "75 € / an, plafond 4 séances / an" },
+    { name: "Ag2r-La Mondiale", advantage: "200 € / an via le pack \"prévention bien-être\"" },
+    { name: "AIO Santé", advantage: "150 € / an, plafond 150 €" },
+    { name: "ALPTIS", advantage: "25 € / séance, maximum 5 séances / an, option \"Renfort bien-être\"" },
+    { name: "Amavie", advantage: "35 € / séance, maximum 10 séances / an" },
+    { name: "April", advantage: "Forfaits progressifs, jusqu'à 240 € / an à partir de la 5e année" },
+    { name: "ASAF", advantage: "Jusqu'à 450 € / an selon les contrats" },
     { name: "Assurema", advantage: "Contrat Protect Santé" },
-    { name: "Cegema", advantage: "30 €/séance" },
-    { name: "Choralis", advantage: "Plafond 3 séances/an" },
-    { name: "CNM Santé", advantage: "60 €/séance, plafond 300 €/an" },
-    { name: "Cocoon Génération", advantage: "30 €/séance, plafond 5 séances/an ou 350 €/an" },
+    { name: "Cegema", advantage: "30 € / séance" },
+    { name: "Choralis", advantage: "Plafond 3 séances / an" },
+    { name: "CNM Santé", advantage: "60 € / séance, plafond 300 € / an" },
+    { name: "Cocoon Génération", advantage: "30 € / séance, plafond 5 séances / an ou 350 € / an" },
     { name: "Gras Savoye", advantage: "Avantages selon les contrats (particulier ou entreprise)" },
     { name: "Harmonie Mutuelle", advantage: "Oui pour certains contrats entreprise" },
     { name: "HENNER", advantage: "Oui pour les contrats d'entreprise et TNS" },
-    { name: "La Mutuelle Générale", advantage: "10 € à 30 €/séance, plafond 3 fois/an selon contrat" },
-    { name: "M comme Mutuelle", advantage: "Jusqu'à 40 €/séance, 2 fois/an" },
+    { name: "La Mutuelle Générale", advantage: "10 € à 30 € / séance, plafond 3 fois / an selon contrat" },
+    { name: "M comme Mutuelle", advantage: "Jusqu'à 40 € / séance, 2 fois / an" },
     { name: "Matmut", advantage: "Médecines douces (réflexologie incluse) selon contrat" },
-    { name: "MFIF", advantage: "Jusqu'à 450 €/an selon garantie" },
-    { name: "MGP", advantage: "Forfaits de 40 € à 120 €/an selon le plan choisi" },
+    { name: "MFIF", advantage: "Jusqu'à 450 € / an selon garantie" },
+    { name: "MGP", advantage: "Forfaits de 40 € à 120 € / an selon le plan choisi" },
     { name: "MIE", advantage: "Forfait médecine douce, détails selon la réglementation" },
-    { name: "Miltis", advantage: "30 €/séance, plafond 3 séances/an" },
+    { name: "Miltis", advantage: "30 € / séance, plafond 3 séances / an" },
     { name: "MIP", advantage: "Avantages selon contrat" },
-    { name: "Muta Santé", advantage: "40 €/séance, plafond 2 séances/an" },
+    { name: "Muta Santé", advantage: "40 € / séance, plafond 2 séances / an" },
     { name: "Ociane", advantage: "Oui selon contrat" },
-    { name: "Pavillon prévoyance", advantage: "30 €/séance, plafond 10 séances/an" },
-    { name: "Prévoir", advantage: "120 €/an, avec 120 € supplémentaires après 4 ans" },
+    { name: "Pavillon prévoyance", advantage: "30 € / séance, plafond 10 séances / an" },
+    { name: "Prévoir", advantage: "120 € / an, avec 120 € supplémentaires après 4 ans" },
     { name: "ProBTP", advantage: "Avantages selon contrat négocié par l'entreprise" },
-    { name: "Smatis", advantage: "25 € à 40 €/séance, 2 à 4 séances/an" },
-    { name: "SPVIE Santé", advantage: "50 €/séance, plafond 70 à 250 €/an" },
-    { name: "Swiss Life", advantage: "55 €/séance, plafond 5 séances/an" },
-    { name: "Solimut", advantage: "25 €/séance, plafond 3 séances/an selon contrat" },
-    { name: "Veralis Assurance Santé", advantage: "40 € à 120 €/an selon contrat" },
-    { name: "VIVINTER", advantage: "Plafond 415 €/an" },
+    { name: "Smatis", advantage: "25 € à 40 € / séance, 2 à 4 séances / an" },
+    { name: "SPVIE Santé", advantage: "50 € / séance, plafond 70 à 250 € / an" },
+    { name: "Swiss Life", advantage: "55 € / séance, plafond 5 séances / an" },
+    { name: "Solimut", advantage: "25 € / séance, plafond 3 séances / an selon contrat" },
+    { name: "Veralis Assurance Santé", advantage: "40 € à 120 € / an selon contrat" },
+    { name: "VIVINTER", advantage: "Plafond 415 € / an" },
   ];
 
   return (
     <>
       <Helmet>
-        <title>La méthode du Laser - Centre Tabac Laser | Anti-Tabac</title>
+        <title>Méthode Laser Anti-tabac - Arrêter de fumer | Sevrage</title>
         <meta
           name="description"
-          content="Découvrez notre méthode de sevrage tabagique au laser. Une solution efficace et naturelle pour arrêter de fumer définitivement."
+          content="La méthode laser anti-tabac pour un sevrage réussi, est adaptée pour vous permettre d'arrêter de fumer en seulement 1 séance."
         />
       </Helmet>
 
