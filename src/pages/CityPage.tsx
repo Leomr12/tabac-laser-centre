@@ -23,7 +23,7 @@ const CityPage = () => {
       return data.features[0]?.properties?.postcode || "XXXXX";
     },
     staleTime: 1000 * 60 * 60, // Cache for 1 hour
-    cacheTime: 1000 * 60 * 60 * 24, // Keep in cache for 24 hours
+    gcTime: 1000 * 60 * 60 * 24, // Keep in cache for 24 hours (formerly cacheTime)
   });
 
   const { data: nearbyCities = [] } = useQuery({
@@ -56,7 +56,7 @@ const CityPage = () => {
       }
     },
     staleTime: 1000 * 60 * 60, // Cache for 1 hour
-    cacheTime: 1000 * 60 * 60 * 24, // Keep in cache for 24 hours
+    gcTime: 1000 * 60 * 60 * 24, // Keep in cache for 24 hours (formerly cacheTime)
   });
 
   const postalCode = postalData || "XXXXX";
@@ -268,3 +268,4 @@ const CityPage = () => {
 };
 
 export default CityPage;
+
