@@ -5,6 +5,7 @@ import EtapesSeance from "./pages/EtapesSeance";
 import Garanties from "./pages/Garanties";
 import CityPage from "./pages/CityPage";
 import RendezVous from "./pages/RendezVous";
+import InformationsLegales from "./pages/InformationsLegales";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/garanties" element={<Garanties />} />
         <Route path="/rendez-vous" element={<RendezVous />} />
         <Route path="/centre-anti-tabac-laser/:city" element={<CityPage />} />
+        <Route path="/informations-legales" element={<InformationsLegales />} />
       </Routes>
     </Router>
   );

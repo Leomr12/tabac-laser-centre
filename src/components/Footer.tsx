@@ -9,8 +9,8 @@ const Footer = () => {
             Tous droits réservés - Copyright 2025
           </div>
           <div className="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 items-center">
-            <Link to="/mentions-legales" className="hover:text-primary transition-colors">
-              Mentions Légales
+            <Link to="/informations-legales" className="hover:text-primary transition-colors">
+              Informations légales
             </Link>
             <Link to="/politique-confidentialite" className="hover:text-primary transition-colors">
               Politique de Confidentialité
