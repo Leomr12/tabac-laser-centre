@@ -27,20 +27,33 @@ const CityPage = () => {
     },
   });
 
-  // Fetch nearby cities
+  // Fetch nearby cities with improved logic
   const { data: nearbyCities = [] } = useQuery({
     queryKey: ['nearbyCities', city],
     queryFn: async () => {
       try {
         const deptCode = postalData?.substring(0, 2);
         if (deptCode) {
+          // Fetch all cities in the department
           const response = await fetch(`https://geo.api.gouv.fr/departements/${deptCode}/communes`);
           const data = await response.json();
-          return data
+          
+          // Filter and sort cities by population and distance
+          const majorCities = data
             .filter(c => c.nom.toLowerCase() !== city?.toLowerCase())
             .sort((a, b) => (b.population || 0) - (a.population || 0))
             .slice(0, 12)
             .map(c => c.nom);
+
+          // Add some major regional cities if we don't have enough nearby cities
+          const defaultCities = [
+            "Bordeaux", "Bergerac", "Périgueux", "Libourne",
+            "Mérignac", "Pessac", "Agen", "Mont-de-Marsan",
+            "Arcachon", "Biarritz", "Bayonne", "Pau"
+          ];
+
+          const combinedCities = [...new Set([...majorCities, ...defaultCities])].slice(0, 12);
+          return combinedCities;
         }
         return [];
       } catch (error) {

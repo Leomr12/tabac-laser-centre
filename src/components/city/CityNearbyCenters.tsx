@@ -19,7 +19,7 @@ export const CityNearbyCenters = ({ nearbyCities }: CityNearbyCentersProps) => {
                     <a
                       key={index}
                       href={`/centre-anti-tabac-laser/${nearbyCity.toLowerCase().replace(/ /g, '-')}`}
-                      className="block text-primary hover:underline"
+                      className="block text-gray-700 hover:underline"
                     >
                       Centre Tabac Laser à {nearbyCity}
                     </a>
