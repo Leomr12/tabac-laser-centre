@@ -6,7 +6,7 @@ const RendezVous = () => {
 
   useEffect(() => {
     const startTime = Date.now();
-    const duration = 3000; // 3 seconds
+    const duration = 2000; // 2 seconds instead of 3
 
     const updateProgress = () => {
       const elapsed = Date.now() - startTime;
@@ -22,7 +22,7 @@ const RendezVous = () => {
 
     requestAnimationFrame(updateProgress);
 
-    // Fallback redirect after 3 seconds
+    // Fallback redirect after 2 seconds
     const timeout = setTimeout(() => {
       window.location.href = "https://taterapilaser.fr/rechercher-un-praticien/?ref=centre-tabac.fr";
     }, duration);
@@ -35,10 +35,13 @@ const RendezVous = () => {
       <img 
         src="/centre-tabac-logo.png" 
         alt="Centre Tabac Logo" 
-        className="w-32 mb-8"
+        className="w-48 mb-8"
       />
       <div className="w-full max-w-md">
         <Progress value={progress} className="h-2" />
+        <p className="text-gray-600 mt-4 text-center">
+          Recherche d'un Centre à proximité de chez-vous..
+        </p>
       </div>
     </div>
   );
