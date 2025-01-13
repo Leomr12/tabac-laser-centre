@@ -26,47 +26,33 @@ const CityPage = () => {
     },
   });
 
-  // Fetch nearby cities with improved error handling and logging
+  // Fetch nearby cities with improved logic
   const { data: nearbyCities = [] } = useQuery({
     queryKey: ['nearbyCities', city],
     queryFn: async () => {
       try {
-        // First get coordinates of the current city
-        const cityResponse = await fetch(`https://api-adresse.data.gouv.fr/search/?q=${city}&type=municipality&limit=1`);
-        const cityData = await cityResponse.json();
+        // Get the department code from the postal code
+        const deptCode = postalData?.substring(0, 2);
         
-        console.log('City data:', cityData); // Debug log
-        
-        if (!cityData.features?.[0]) {
-          console.warn('No coordinates found for city:', city);
-          return [];
+        // If we have a department code, fetch cities in the same department
+        if (deptCode) {
+          const response = await fetch(`https://geo.api.gouv.fr/departements/${deptCode}/communes`);
+          const data = await response.json();
+          
+          // Filter and sort cities by population (to get major cities first)
+          return data
+            .filter(c => c.nom.toLowerCase() !== city?.toLowerCase())
+            .sort((a, b) => (b.population || 0) - (a.population || 0))
+            .slice(0, 12)
+            .map(c => c.nom);
         }
-        
-        const [lon, lat] = cityData.features[0].geometry.coordinates;
-        
-        // Then get cities around these coordinates with increased radius
-        const nearbyResponse = await fetch(
-          `https://api-adresse.data.gouv.fr/search/?lat=${lat}&lon=${lon}&type=municipality&limit=20`
-        );
-        const nearbyData = await nearbyResponse.json();
-        
-        console.log('Nearby cities data:', nearbyData); // Debug log
-        
-        const cities = nearbyData.features
-          .map(f => f.properties.city)
-          .filter(c => c && c.toLowerCase() !== city?.toLowerCase()) // Remove current city and null values
-          .filter((c, index, self) => self.indexOf(c) === index) // Remove duplicates
-          .slice(0, 12); // Ensure we only get 12 cities
-        
-        console.log('Filtered nearby cities:', cities); // Debug log
-        
-        return cities;
+        return [];
       } catch (error) {
         console.error('Error fetching nearby cities:', error);
         return [];
       }
     },
-    staleTime: 1000 * 60 * 5, // Cache for 5 minutes
+    enabled: !!postalData, // Only run this query when we have the postal code
   });
 
   const postalCode = postalData || "XXXXX";
@@ -242,23 +228,29 @@ const CityPage = () => {
                     <h2 className="text-3xl font-bold mb-8 text-center">
                       Les autres Centres Tabac Laser à proximité de chez-vous
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      {Array.from({ length: 3 }).map((_, colIndex) => (
-                        <div key={colIndex} className="space-y-4">
-                          {nearbyCities
-                            .slice(colIndex * 4, (colIndex + 1) * 4)
-                            .map((nearbyCity, index) => (
-                              <Link
-                                key={index}
-                                to={`/centre-anti-tabac-laser/${nearbyCity.toLowerCase().replace(/ /g, '-')}`}
-                                className="block text-primary hover:underline"
-                              >
-                                Centre Tabac Laser à {nearbyCity}
-                              </Link>
-                            ))}
-                        </div>
-                      ))}
-                    </div>
+                    {nearbyCities.length > 0 ? (
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {Array.from({ length: 3 }).map((_, colIndex) => (
+                          <div key={colIndex} className="space-y-4">
+                            {nearbyCities
+                              .slice(colIndex * 4, (colIndex + 1) * 4)
+                              .map((nearbyCity, index) => (
+                                <Link
+                                  key={index}
+                                  to={`/centre-anti-tabac-laser/${nearbyCity.toLowerCase().replace(/ /g, '-')}`}
+                                  className="block text-primary hover:underline"
+                                >
+                                  Centre Tabac Laser à {nearbyCity}
+                                </Link>
+                              ))}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-center text-gray-600">
+                        Chargement des centres à proximité...
+                      </p>
+                    )}
                   </div>
                 </section>
 
