@@ -6,10 +6,14 @@ import Garanties from "./pages/Garanties";
 import CityPage from "./pages/CityPage";
 import RendezVous from "./pages/RendezVous";
 import InformationsLegales from "./pages/InformationsLegales";
+import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
+import PolitiqueCookies from "./pages/PolitiqueCookies";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/decouvrir-la-methode" element={<DecouvrirMethode />} />
@@ -18,6 +22,8 @@ function App() {
         <Route path="/rendez-vous" element={<RendezVous />} />
         <Route path="/centre-anti-tabac-laser/:city" element={<CityPage />} />
         <Route path="/informations-legales" element={<InformationsLegales />} />
+        <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
+        <Route path="/politique-cookies" element={<PolitiqueCookies />} />
       </Routes>
     </Router>
   );
