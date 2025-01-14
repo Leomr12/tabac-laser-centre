@@ -79,7 +79,7 @@ const DecouvrirMethode = () => {
                 </h2>
                 <p className="text-gray-700 mb-8">
                   Notre méthode de <b>sevrage tabagique au laser</b> s'appuie sur une technologie moderne, inspirée des principes de l'acupuncture, pour accompagner les <b>fumeurs dans leur démarche d'arrêt</b>. À l'aide d'un faisceau laser doux et indolore, des points réflexes spécifiques sont stimulés sur des zones spécifiques. Ces points sont directement liés aux <b>mécanismes de la dépendance, à la gestion du stress et au rééquilibrage énergétique du corps</b>.
-                  <br />
+                  <br /><br />
                   Le <b>laser</b> agit en favorisant la libération naturelle d'endorphines, les hormones responsables de la détente et du bien-être. Ce processus réduit efficacement les <b>envies de fumer</b> tout en apaisant les symptômes de manque, tels que l'irritabilité ou l'anxiété. Dès la première séance, cette approche douce permet une <b>diminution significative</b> de la dépendance à la nicotine, offrant un soutien naturel et durable pour <b>arrêter de fumer</b>.
                 </p>
               </div>
