@@ -78,7 +78,8 @@ const Index = () => {
                   </h3>
                   <p className="text-gray-700 mb-8">
                     Le <b>sevrage tabagique au laser</b> repose sur le principe de <b>l'auriculothérapie</b>, une méthode inspirée de l'acupuncture. Cette technique utilise un faisceau laser doux pour stimuler des points spécifiques situés principalement sur l'oreille et le visage. En agissant sur ces points, <b>le laser aide à réduire l'envie de fumer</b>, diminue les symptômes de manque et favorise un état de relaxation profonde. Contrairement à d'autres approches, cette méthode est non invasive et parfaitement indolore.
-                  </p>
+                  <br>
+Vous souhaitez franchir le pas et dire adieu à la cigarette ? <b>Prenez rendez-vous</b> dès aujourd’hui dans l’un de nos Centres Tabac Laser. Nous vous accompagnerons pour retrouver une vie plus saine et équilibrée. Faites le premier pas vers une nouvelle liberté !</p>
                   <button className="bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition-colors">
                     <a href="/rendez-vous">Prendre rendez-vous</a>
                   </button>
