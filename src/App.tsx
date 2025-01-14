@@ -1,32 +1,35 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+```tsx
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "sonner";
 import Index from "./pages/Index";
-import DecouvrirMethode from "./pages/DecouvrirMethode";
-import EtapesSeance from "./pages/EtapesSeance";
-import Garanties from "./pages/Garanties";
 import CityPage from "./pages/CityPage";
-import RendezVous from "./pages/RendezVous";
-import InformationsLegales from "./pages/InformationsLegales";
-import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
-import PolitiqueCookies from "./pages/PolitiqueCookies";
+import AdminPage from "./pages/AdminPage";
 import ScrollToTop from "./components/ScrollToTop";
+import CookieBanner from "./components/CookieBanner";
+import { queryClient } from "./lib/react-query";
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Index />} />
-        <Route path="/decouvrir-la-methode" element={<DecouvrirMethode />} />
-        <Route path="/etapes-seance" element={<EtapesSeance />} />
-        <Route path="/garanties" element={<Garanties />} />
-        <Route path="/rendez-vous" element={<RendezVous />} />
-        <Route path="/centre-anti-tabac-laser/:city" element={<CityPage />} />
-        <Route path="/informations-legales" element={<InformationsLegales />} />
-        <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
-        <Route path="/politique-cookies" element={<PolitiqueCookies />} />
-      </Routes>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <div className="font-montserrat">
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route
+              path="/centre-anti-tabac-laser/:city"
+              element={<CityPage />}
+            />
+          </Routes>
+          <ScrollToTop />
+          <CookieBanner />
+        </div>
+      </BrowserRouter>
+      <Toaster />
+    </QueryClientProvider>
   );
 }
 
 export default App;
+```
