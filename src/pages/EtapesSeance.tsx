@@ -37,7 +37,7 @@ const EtapesSeance = () => {
 
       <Header />
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-16">
         <h1 className="text-4xl font-bold text-center mb-8">Les étapes d'une séance Anti-Tabac Laser</h1>
 
         <div className="text-center mb-12 max-w-2xl mx-auto">
