@@ -113,7 +113,7 @@ const Admin = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredCities.map((city: any) => (
+                {filteredCities.slice(0, 50).map((city: any) => (
                   <TableRow key={city.slug}>
                     <TableCell>{city.name}</TableCell>
                     <TableCell className="space-x-2">
