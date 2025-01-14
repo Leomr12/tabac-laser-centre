@@ -5,17 +5,17 @@ const TestimonialsSection = () => {
     {
       name: "Marie L.",
       text: "Grâce à cette méthode, j'ai arrêté de fumer après 15 ans de tabagisme. Le suivi personnalisé a fait toute la différence.",
-      date: "Mars 2024"
+      date: "Il y a 1 semaine"
     },
     {
       name: "Pierre D.",
       text: "Une approche professionnelle et efficace. Je recommande vivement à tous ceux qui souhaitent arrêter de fumer.",
-      date: "Février 2024"
+      date: "Il y a 2 mois"
     },
     {
       name: "Sophie M.",
       text: "J'étais sceptique au début, mais les résultats sont là. Plus de cigarette depuis 6 mois !",
-      date: "Janvier 2024"
+      date: "Il y a 6 mois"
     }
   ];
 
