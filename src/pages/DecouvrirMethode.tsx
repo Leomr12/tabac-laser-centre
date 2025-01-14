@@ -79,8 +79,9 @@ const DecouvrirMethode = () => {
                     Une méthode douce et efficace
                   </h2>
                   <p className="text-gray-700 mb-8">
-                    Notre méthode de sevrage tabagique au laser est basée sur la stimulation de points d'acupuncture spécifiques. Cette technique, totalement indolore, permet de réduire considérablement l'envie de fumer dès la première séance. Le laser agit sur les points réflexes liés à la dépendance, favorisant la production naturelle d'endorphines et diminuant ainsi le besoin de nicotine.
-                  </p>
+                    Notre méthode de <b>sevrage tabagique au laser</b> s’appuie sur une technologie moderne, inspirée des principes de l’acupuncture, pour accompagner les <b>fumeurs dans leur démarche d’arrêt</b>. À l’aide d’un faisceau laser doux et indolore, des points réflexes spécifiques sont stimulés sur des zones spécifiques. Ces points sont directement liés aux <b>mécanismes de la dépendance, à la gestion du stress et au rééquilibrage énergétique du corps</b>.
+<br>
+Le <b>laser</b> agit en favorisant la libération naturelle d’endorphines, les hormones responsables de la détente et du bien-être. Ce processus réduit efficacement les <b>envies de fumer</b> tout en apaisant les symptômes de manque, tels que l'irritabilité ou l'anxiété. Dès la première séance, cette approche douce permet une <b>diminution significative</b> de la dépendance à la nicotine, offrant un soutien naturel et durable pour <b>arrêter de fumer</b>. </p>
                 </div>
                 <div className="md:w-1/2">
                   <img
