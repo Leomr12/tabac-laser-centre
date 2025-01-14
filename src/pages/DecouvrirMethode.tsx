@@ -150,7 +150,7 @@ const DecouvrirMethode = () => {
               
               <div className="mt-12 flex justify-center">
                 <Button asChild className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg text-lg">
-                  <a href="/prendre-rendez-vous">Prendre rendez-vous</a>
+                  <a href="/rendez-vous">Prendre rendez-vous</a>
                 </Button>
               </div>
 
