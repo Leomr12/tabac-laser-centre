@@ -8,7 +8,7 @@ const Header = () => {
 
   const menuItems = [
     { to: "/", label: "Accueil" },
-    { to: "/decouvrir-la-methode", label: "Découvrir la méthode" },
+    { to: "/decouvrir-methode", label: "Découvrir la méthode" },
     { to: "/etapes-seance", label: "Les étapes d'une séance" },
     { to: "/garanties", label: "Nos garanties" },
   ];
