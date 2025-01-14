@@ -65,7 +65,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        atkinson: ["Atkinson Hyperlegible", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
     },
   },
