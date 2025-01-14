@@ -85,8 +85,8 @@ const Index = () => {
                 </div>
                 <div className="md:w-1/2">
                   <img
-                   src="/Sevrage-tabagique-Arret-Tabac.png"
-                    alt="Arrêter la cigarette - Centre Tabac Laser Arrêt Tabac"
+                   src="/Sevrage-tabagique-Stop-Tabac.png"
+                    alt="Sevrage Tabagique - Séance anti-tabac laser"
                   />
                 </div>
               </div>
