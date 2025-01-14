@@ -143,8 +143,9 @@ Vous souhaitez franchir le pas et dire adieu à la cigarette ? <b>Prenez rendez-
                     Comment fonctionne une séance de sevrage tabagique au laser ?
                   </h2>
                   <p className="text-gray-700 mb-8">
-                    Une séance commence par un <b>entretien personnalisé pour comprendre vos habitudes de consommation</b> et votre motivation à arrêter de fumer. Ensuite, un praticien utilise un laser de faible intensité pour stimuler des points stratégiques. Ces points sont choisis en fonction de leur capacité à atténuer <b>les envies de fumer, à réduire le stress et à rétablir l'équilibre énergétique du corps</b>. La séance dure généralement entre 30 et 60 minutes.
-                  </p>
+                    Une <b>séance de sevrage tabagique au laser</b> débute par un entretien personnalisé avec un praticien. Cet échange permet de mieux comprendre vos <b>habitudes de consommation</b>, vos déclencheurs liés au <b>tabac</b> et votre niveau de motivation pour <b>arrêter de fumer</b>. Cette étape est essentielle pour adapter la séance à vos besoins spécifiques et maximiser vos chances de succès.
+<br>
+Une fois l’évaluation réalisée, le praticien procède à l’application du laser de faible intensité. Ce faisceau doux est dirigé vers des points stratégiques situés sur l’oreille, le visage, les mains ou les pieds. Ces points sont sélectionnés en fonction de leur rôle dans la <b>diminution des envies de fumer</b>, la gestion du stress et le rétablissement de l’équilibre énergétique du corps. La séance, totalement indolore et relaxante, dure entre 30 et 60 minutes. Vous en ressortirez avec une sensation de calme et une réduction notable de l’envie de consommer du tabac.</p>
                   <button className="bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition-colors">
                     <a href="/rendez-vous">Prendre rendez-vous</a>
                   </button>
