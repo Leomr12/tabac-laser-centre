@@ -80,7 +80,7 @@ const Index = () => {
                     Le <b>sevrage tabagique au laser</b> repose sur le principe de <b>l'auriculothérapie</b>, une méthode inspirée de l'acupuncture. Cette technique utilise un faisceau laser doux pour stimuler des points spécifiques situés principalement sur l'oreille et le visage. En agissant sur ces points, <b>le laser aide à réduire l'envie de fumer</b>, diminue les symptômes de manque et favorise un état de relaxation profonde. Contrairement à d'autres approches, cette méthode est non invasive et parfaitement indolore.
                   </p>
                   <button className="bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition-colors">
-                    Prendre rendez-vous
+                    <a href="/rendez-vous">Prendre rendez-vous</a>
                   </button>
                 </div>
                 <div className="md:w-1/2">
@@ -112,7 +112,7 @@ const Index = () => {
                 Rejoignez des milliers d'anciens fumeurs libérés de la cigarette grâce au sevrage tabagique laser.
               </p>
               <button className="bg-white text-primary px-8 py-3 rounded-full hover:bg-gray-100 transition-colors">
-                Prendre rendez-vous
+                <a href="/rendez-vous">Prendre rendez-vous</a>
               </button>
             </div>
           </section>
@@ -145,7 +145,7 @@ const Index = () => {
                     Une séance commence par un <b>entretien personnalisé pour comprendre vos habitudes de consommation</b> et votre motivation à arrêter de fumer. Ensuite, un praticien utilise un laser de faible intensité pour stimuler des points stratégiques. Ces points sont choisis en fonction de leur capacité à atténuer <b>les envies de fumer, à réduire le stress et à rétablir l'équilibre énergétique du corps</b>. La séance dure généralement entre 30 et 60 minutes.
                   </p>
                   <button className="bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition-colors">
-                    Prendre rendez-vous
+                    <a href="/rendez-vous">Prendre rendez-vous</a>
                   </button>
                 </div>
                 <div className="md:w-1/2">
