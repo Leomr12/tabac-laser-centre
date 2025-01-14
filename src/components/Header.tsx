@@ -18,7 +18,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="text-2xl font-bold text-primary">
-            <img src="/centre-tabac-logo.png" className="w-[300px] md:w-[300px] max-w-[200px] md:max-w-none" alt="Centre Tabac Logo" />
+            <img src="/centre-tabac-logo.png" className="w-[300px] md:w-[300px] max-w-[200px] md:max-w-none" alt="Centre Tabac Sevrage Laser" />
           </Link>
           
           {/* Desktop Menu */}
