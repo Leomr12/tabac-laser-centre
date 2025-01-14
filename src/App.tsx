@@ -1,4 +1,3 @@
-```tsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "sonner";
@@ -32,4 +31,3 @@ function App() {
 }
 
 export default App;
-```
