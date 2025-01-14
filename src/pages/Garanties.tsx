@@ -51,8 +51,8 @@ const Garanties = () => {
           <div className="bg-white rounded-lg shadow-custom overflow-hidden">
             <div className="h-48 bg-gray-200">
               <img 
-                src="/Sevrage-tabagique-Arret-Tabac.png" 
-                alt="Garantie 12 mois" 
+                src="/garantie-12mois.png" 
+                alt="Garantie de 12 mois" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -68,7 +68,7 @@ const Garanties = () => {
           <div className="bg-white rounded-lg shadow-custom overflow-hidden">
             <div className="h-48 bg-gray-200">
               <img 
-                src="/Sevrage-tabagique-Arret-Tabac (1).png" 
+                src="/garantie-accompagnement.png" 
                 alt="Garantie d'accompagnement" 
                 className="w-full h-full object-cover"
               />
