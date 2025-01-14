@@ -18,7 +18,7 @@ export const CityHero = ({ city }: CityHeroProps) => {
           className="bg-white text-primary hover:bg-gray-100"
           asChild
         >
-          <a href={`https://taterapilaser.fr/rechercher-un-praticien/?type=356&search_location=${city}`}>
+          <a href="https://taterapilaser.fr/rdv/?ref={city}">
             Prendre rendez-vous
           </a>
         </Button>
