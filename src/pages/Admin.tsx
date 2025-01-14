@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Eye, Zap, Search, Settings } from "lucide-react";
+import { Eye, Zap, Search, Settings, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -13,10 +13,24 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+interface City {
+  name: string;
+  slug: string;
+  population: number;
+  code: string;
+}
+
+interface ApiKey {
+  id: string;
+  key: string;
+}
+
 const Admin = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [apiKeys, setApiKeys] = useState<ApiKey[]>([]);
+  const [newApiKey, setNewApiKey] = useState("");
 
   // Fetch French cities
   const { data: cities = [] } = useQuery({
@@ -28,13 +42,21 @@ const Admin = () => {
         name: city.nom,
         slug: city.nom.toLowerCase().replace(/\s+/g, "-"),
         population: city.population,
+        code: city.code,
       }));
     },
   });
 
-  const filteredCities = cities.filter((city: any) =>
-    city.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Filter cities with deduplication based on code
+  const filteredCities = Array.from(
+    new Map(
+      cities
+        .filter((city: City) =>
+          city.name.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+        .map((city: City) => [city.code, city])
+    ).values()
+  ).slice(0, 50);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,6 +74,21 @@ const Admin = () => {
   const handleIndex = async (slug: string) => {
     console.log(`Indexing page for ${slug}`);
     // TODO: Implement Google Indexing API integration
+  };
+
+  const handleAddApiKey = () => {
+    if (newApiKey.trim()) {
+      const newKey: ApiKey = {
+        id: crypto.randomUUID(),
+        key: newApiKey.trim(),
+      };
+      setApiKeys([...apiKeys, newKey]);
+      setNewApiKey("");
+    }
+  };
+
+  const handleRemoveApiKey = (id: string) => {
+    setApiKeys(apiKeys.filter(key => key.id !== id));
   };
 
   if (!isAuthenticated) {
@@ -113,8 +150,8 @@ const Admin = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredCities.slice(0, 50).map((city: any) => (
-                  <TableRow key={city.slug}>
+                {filteredCities.map((city: City) => (
+                  <TableRow key={city.code}>
                     <TableCell>{city.name}</TableCell>
                     <TableCell className="space-x-2">
                       <Button
@@ -154,26 +191,56 @@ const Admin = () => {
         <TabsContent value="settings">
           <div className="bg-white p-6 rounded-lg border">
             <h2 className="text-xl font-semibold mb-4">
-              Réglages des clés API
+              Gestion des clés API Google Search Console
             </h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-medium mb-2">
-                  Google Search Console API
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Cette clé API est nécessaire pour indexer automatiquement les pages
-                  dans Google Search Console. Vous pouvez obtenir votre clé API dans
-                  la console Google Cloud Platform.
-                </p>
-                <div className="flex items-center space-x-4">
-                  <Button
-                    variant="outline"
-                    onClick={() => window.open('https://search.google.com/search-console/api-access', '_blank')}
+            
+            <div className="space-y-6">
+              {/* Formulaire d'ajout de clé API */}
+              <div className="flex gap-4">
+                <Input
+                  type="text"
+                  value={newApiKey}
+                  onChange={(e) => setNewApiKey(e.target.value)}
+                  placeholder="Ajouter une nouvelle clé API"
+                  className="flex-1"
+                />
+                <Button onClick={handleAddApiKey}>
+                  <Plus className="h-4 w-4 mr-2" />
+                  Ajouter
+                </Button>
+              </div>
+
+              {/* Liste des clés API */}
+              <div className="space-y-3">
+                {apiKeys.map((apiKey) => (
+                  <div
+                    key={apiKey.id}
+                    className="flex items-center justify-between p-3 bg-gray-50 rounded-md"
                   >
-                    Obtenir une clé API
-                  </Button>
-                </div>
+                    <code className="text-sm">{apiKey.key}</code>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleRemoveApiKey(apiKey.id)}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-4">
+                <Button
+                  variant="outline"
+                  onClick={() =>
+                    window.open(
+                      "https://search.google.com/search-console/api-access",
+                      "_blank"
+                    )
+                  }
+                >
+                  Obtenir une clé API
+                </Button>
               </div>
             </div>
           </div>
