@@ -78,7 +78,7 @@ const Index = () => {
                   </h3>
                   <p className="text-gray-700 mb-8">
                     Le <b>sevrage tabagique au laser</b> repose sur le principe de <b>l'auriculothérapie</b>, une méthode inspirée de l'acupuncture. Cette technique utilise un faisceau laser doux pour stimuler des points spécifiques situés principalement sur l'oreille et le visage. En agissant sur ces points, <b>le laser aide à réduire l'envie de fumer</b>, diminue les symptômes de manque et favorise un état de relaxation profonde. Contrairement à d'autres approches, cette méthode est non invasive et parfaitement indolore.
-                  <br />
+                  <br /><br />
                   Vous souhaitez franchir le pas et dire adieu à la cigarette ? <b>Prenez rendez-vous</b> dès aujourd'hui dans l'un de nos Centres Tabac Laser. Nous vous accompagnerons pour retrouver une vie plus saine et équilibrée. Faites le premier pas vers une nouvelle liberté !</p>
                   <button className="bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition-colors">
                     <a href="/rendez-vous">Prendre rendez-vous</a>
@@ -144,7 +144,7 @@ const Index = () => {
                   </h2>
                   <p className="text-gray-700 mb-8">
                     Une <b>séance de sevrage tabagique au laser</b> débute par un entretien personnalisé avec un praticien. Cet échange permet de mieux comprendre vos <b>habitudes de consommation</b>, vos déclencheurs liés au <b>tabac</b> et votre niveau de motivation pour <b>arrêter de fumer</b>. Cette étape est essentielle pour adapter la séance à vos besoins spécifiques et maximiser vos chances de succès.
-                  <br />
+                  <br /><br />
                   Une fois l'évaluation réalisée, le praticien procède à l'application du laser de faible intensité. Ce faisceau doux est dirigé vers des points stratégiques situés sur l'oreille, le visage, les mains ou les pieds. Ces points sont sélectionnés en fonction de leur rôle dans la <b>diminution des envies de fumer</b>, la gestion du stress et le rétablissement de l'équilibre énergétique du corps. La séance, totalement indolore et relaxante, dure entre 30 et 60 minutes. Vous en ressortirez avec une sensation de calme et une réduction notable de l'envie de consommer du tabac.</p>
                   <button className="bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition-colors">
                     <a href="/rendez-vous">Prendre rendez-vous</a>
