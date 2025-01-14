@@ -85,8 +85,8 @@ const DecouvrirMethode = () => {
               </div>
               <div className="md:w-1/2">
                 <img
-                  src="/Sevrage-tabagique-Arret-Tabac.png"
-                  alt="Méthode laser anti-tabac"
+                  src="/centre-tabac-laser.png"
+                  alt="Méthode laser anti-tabac sevrage"
                   className="rounded-lg shadow-lg"
                   loading="eager"
                   decoding="async"
