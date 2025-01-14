@@ -8,6 +8,7 @@ import RendezVous from "./pages/RendezVous";
 import InformationsLegales from "./pages/InformationsLegales";
 import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 import PolitiqueCookies from "./pages/PolitiqueCookies";
+import Admin from "./pages/Admin";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
@@ -22,8 +23,12 @@ function App() {
         <Route path="/rendez-vous" element={<RendezVous />} />
         <Route path="/centre-anti-tabac-laser/:city" element={<CityPage />} />
         <Route path="/informations-legales" element={<InformationsLegales />} />
-        <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
+        <Route
+          path="/politique-confidentialite"
+          element={<PolitiqueConfidentialite />}
+        />
         <Route path="/politique-cookies" element={<PolitiqueCookies />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
   );
