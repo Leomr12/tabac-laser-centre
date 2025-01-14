@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Eye, Zap, Search } from "lucide-react";
+import { Eye, Zap, Search, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -87,6 +87,7 @@ const Admin = () => {
         <TabsList>
           <TabsTrigger value="cities">Villes</TabsTrigger>
           <TabsTrigger value="auto">Référencement automatique</TabsTrigger>
+          <TabsTrigger value="settings">Réglages</TabsTrigger>
         </TabsList>
 
         <TabsContent value="cities">
@@ -147,7 +148,34 @@ const Admin = () => {
               Le système indexe automatiquement 200 pages par jour en utilisant
               différentes clés API pour optimiser le référencement.
             </p>
-            {/* TODO: Add API key management and scheduling interface */}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="settings">
+          <div className="bg-white p-6 rounded-lg border">
+            <h2 className="text-xl font-semibold mb-4">
+              Réglages des clés API
+            </h2>
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-lg font-medium mb-2">
+                  Google Search Console API
+                </h3>
+                <p className="text-gray-600 mb-4">
+                  Cette clé API est nécessaire pour indexer automatiquement les pages
+                  dans Google Search Console. Vous pouvez obtenir votre clé API dans
+                  la console Google Cloud Platform.
+                </p>
+                <div className="flex items-center space-x-4">
+                  <Button
+                    variant="outline"
+                    onClick={() => window.open('https://search.google.com/search-console/api-access', '_blank')}
+                  >
+                    Obtenir une clé API
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
         </TabsContent>
       </Tabs>
