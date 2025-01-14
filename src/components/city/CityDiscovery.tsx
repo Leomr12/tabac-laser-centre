@@ -21,7 +21,7 @@ export const CityDiscovery = ({ city }: CityDiscoveryProps) => {
               <b>Situé à proximité de {city}</b>, ce centre accompagne les fumeurs dans leur démarche d'arrêt définitif. Grâce à une séance laser d'une durée d'environ une heure, les résultats sont rapides et durables. <b>La réflexologie laser est une alternative efficace</b> aux substituts nicotiniques, sans effets secondaires ni douleurs.
             </p>
             <Button className="mt-4" asChild>
-              <a href={`https://taterapilaser.fr/rechercher-un-praticien/?type=356&search_location=${city}`}>
+              <a href="https://taterapilaser.fr/rdv/?ref={city}">
                 Prendre rendez-vous
               </a>
             </Button>
