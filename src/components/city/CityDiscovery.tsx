@@ -28,7 +28,7 @@ export const CityDiscovery = ({ city }: CityDiscoveryProps) => {
         </div>
         <div className="relative flex items-center h-full bg-gray-100">
           <img
-            src="https://images.unsplash.com/photo-1483058712412-4245e9b90334"
+            src="/arreter-de-fumer-tabac-laser.png"
             alt="Centre anti-tabac à {city}"
             className="object-cover w-full h-full"
           />
