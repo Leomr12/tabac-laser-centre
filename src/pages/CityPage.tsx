@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useQuery } from "@tanstack/react-query";
+import { CityHero } from "../components/city/CityHero";
 import { CityHeroLarge } from "../components/city/CityHeroLarge";
 import { CityDiscovery } from "../components/city/CityDiscovery";
 import { CityNearbyCenters } from "../components/city/CityNearbyCenters";
@@ -96,6 +97,7 @@ const CityPage = () => {
       <div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-grow">
+          <CityHero city={capitalizedCity} />
           <CityHeroLarge city={capitalizedCity} />
           <CityDiscovery city={capitalizedCity} />
           <CityMotivation city={capitalizedCity} />
