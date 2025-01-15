@@ -9,7 +9,7 @@ export const CityHeroLarge = ({ city }: CityHeroLargeProps) => {
     <section>
       <div className="relative h-[20px] mb-16">
         <img
-          src="https://images.unsplash.com/photo-1615729947596-a598e5de0ab3"
+          src="/centre-tabac-laser.png"
           alt={`Centre anti-tabac à ${city}`}
           className="w-full h-full object-cover"
         />
