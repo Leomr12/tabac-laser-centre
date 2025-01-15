@@ -15,11 +15,10 @@ export const CityDiscovery = ({ city }: CityDiscoveryProps) => {
           </h2>
           <div className="prose max-w-none text-gray-700">
             <p className="mb-6">
-              Le <b>centre anti-tabac de {city}</b> propose une méthode pour <b>arrêter de fumer grâce à la réflexologie laser</b>. En une seule séance, il est possible de réduire significativement l'envie de fumer et d'apaiser les symptômes liés au sevrage. <b>Cette technique naturelle et indolore</b> stimule des points réflexes spécifiques pour agir directement sur la dépendance au tabac.
-            </p>
+              À proximité de {city}, notre Centre Anti-Tabac vous propose une solution innovante pour <b>dire adieu à la cigarette</b> grâce à la réflexologie laser. Cette méthode naturelle, indolore et non invasive cible des points réflexes spécifiques afin de réduire considérablement l’envie de fumer et d’atténuer les désagréments du sevrage.
+</p>
             <p className="mb-6">
-              <b>Situé à proximité de {city}</b>, ce centre accompagne les fumeurs dans leur démarche d'arrêt définitif. Grâce à une séance laser d'une durée d'environ une heure, les résultats sont rapides et durables. <b>La réflexologie laser est une alternative efficace</b> aux substituts nicotiniques, sans effets secondaires ni douleurs.
-            </p>
+              En <b>une seule séance</b> d’environ une heure, vous pouvez amorcer un changement durable et retrouver <b>une vie sans tabac</b>. Situé <b>près de {city}</b>, notre centre offre un accompagnement personnalisé pour soutenir votre démarche et maximiser vos chances de succès.</p>
             <Button className="mt-4 text-white" asChild>
               <a href={`https://taterapilaser.fr/rdv/?ref=${city}`}>
                 Prendre rendez-vous
@@ -30,7 +29,7 @@ export const CityDiscovery = ({ city }: CityDiscoveryProps) => {
         <div className="relative flex items-center h-full bg-gray-100">
           <img
             src="https://images.unsplash.com/photo-1483058712412-4245e9b90334"
-            alt="Centre anti-tabac moderne"
+            alt="Centre anti-tabac à {city}"
             className="object-cover w-full h-full"
           />
         </div>
