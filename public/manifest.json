@@ -1,0 +1,16 @@
+{
+  "name": "Centre Tabac - Arrêter de fumer en 1 séance",
+  "short_name": "Centre Tabac",
+  "description": "Arrêtez de fumer en 1 séance avec nos Centres Anti-Tabac. Dites Stop au Tabac avec un sevrage tabagique réussi au Laser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
