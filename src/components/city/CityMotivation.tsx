@@ -15,9 +15,9 @@ export const CityMotivation = ({ city }: CityMotivationProps) => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <ArgumentCard icon={Award} title="Méthode connue et reconnue" />
-          <ArgumentCard icon={Shield} title="Garantie de 12 mois en cas de rechute" />
+          <ArgumentCard icon={Shield} title="Garantie 12 mois" />
           <ArgumentCard icon={Smile} title="Séances sans aucunes douleurs" />
-          <ArgumentCard icon={Heart} title="Séances sans effets ni prise de poids" />
+          <ArgumentCard icon={Heart} title="Séances sans prise de poids" />
         </div>
       </div>
     </section>
