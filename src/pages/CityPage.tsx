@@ -3,10 +3,11 @@ import { Helmet } from "react-helmet";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useQuery } from "@tanstack/react-query";
-import { CityHero } from "../components/city/CityHero";
+import { CityHeroLarge } from "../components/city/CityHeroLarge";
 import { CityDiscovery } from "../components/city/CityDiscovery";
-import { CityReflexology } from "../components/city/CityReflexology";
 import { CityNearbyCenters } from "../components/city/CityNearbyCenters";
+import { CityMotivation } from "../components/city/CityMotivation";
+import { CityFAQ } from "../components/city/CityFAQ";
 
 const CityPage = () => {
   const { city } = useParams();
@@ -95,16 +96,11 @@ const CityPage = () => {
       <div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-grow">
-          <CityHero city={capitalizedCity} />
-          <section className="py-16">
-            <div className="container mx-auto px-4">
-              <div className="space-y-12">
-                <CityDiscovery city={capitalizedCity} />
-                <CityReflexology />
-                <CityNearbyCenters nearbyCities={nearbyCities} />
-              </div>
-            </div>
-          </section>
+          <CityHeroLarge city={capitalizedCity} />
+          <CityDiscovery city={capitalizedCity} />
+          <CityMotivation city={capitalizedCity} />
+          <CityFAQ city={capitalizedCity} />
+          <CityNearbyCenters nearbyCities={nearbyCities} />
         </main>
         <Footer />
       </div>
