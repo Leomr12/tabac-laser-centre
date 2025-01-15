@@ -7,7 +7,7 @@ interface CityHeroLargeProps {
 export const CityHeroLarge = ({ city }: CityHeroLargeProps) => {
   return (
     <section>
-      <div className="relative h-[400px] mb-16">
+      <div className="relative h-[20px] mb-16">
         <img
           src="https://images.unsplash.com/photo-1615729947596-a598e5de0ab3"
           alt={`Centre anti-tabac à ${city}`}
