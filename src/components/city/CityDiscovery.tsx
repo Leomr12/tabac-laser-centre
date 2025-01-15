@@ -19,7 +19,14 @@ export const CityDiscovery = ({ city }: CityDiscoveryProps) => {
 </p>
             <p className="mb-6">
               En <b>une seule séance</b> d’environ une heure, vous pouvez amorcer un changement durable et retrouver <b>une vie sans tabac</b>. Situé <b>près de {city}</b>, notre centre offre un accompagnement personnalisé pour soutenir votre démarche et maximiser vos chances de succès.</p>
-            <Button className="mt-4 text-white" asChild>
+            
+<p className="mb-6">
+              La <b>réflexologie laser</b> constitue une alternative performante aux substituts nicotiniques, <b>sans effets secondaires ni douleur</b>. Optez pour une méthode aprouvée et efficace pour <b>arrêter définitivement le tabac</b>.
+</p>
+            
+
+
+<Button className="mt-4 text-white" asChild>
               <a href={`https://taterapilaser.fr/rdv/?ref=${city}`}>
                 Prendre rendez-vous
               </a>
