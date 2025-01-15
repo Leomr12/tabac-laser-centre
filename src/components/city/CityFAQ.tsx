@@ -15,35 +15,32 @@ export const CityFAQ = ({ city }: CityFAQProps) => {
               Quelle est la durée d'une séance de sevrage tabagique à {city} ?
             </AccordionTrigger>
             <AccordionContent>
-              Une séance de sevrage tabagique dure environ 45 minutes à 1 heure. Ce temps comprend un entretien initial pour comprendre vos habitudes et le traitement par réflexologie laser.
-            </AccordionContent>
-          </AccordionItem>
+              Une séance de sevrage tabagique près de {city} dure généralement environ 60 minutes. Cette durée a été pensée pour offrir une prise en charge à la fois personnalisée et efficace. Si vous souhaitez être accompagné(e) d’un proche, la séance peut s’étendre jusqu’à deux heures, permettant une expérience plus enrichissante et collective. Pour toute information supplémentaire, n’hésitez pas à contacter votre Centre.
+            </AccordionItem>
 
           <AccordionItem value="side-effects">
             <AccordionTrigger>
               Quels sont les effets secondaires ou indésirables possibles après une séance de sevrage tabagique ?
             </AccordionTrigger>
             <AccordionContent>
-              La réflexologie laser est une méthode naturelle et non invasive qui ne présente aucun effet secondaire connu. Elle n'entraîne ni prise de poids ni autres désagréments couramment associés à l'arrêt du tabac.
-            </AccordionContent>
-          </AccordionItem>
+              Notre méthode de réflexologie laser est entièrement naturelle et ne présente aucune contre-indication. Chaque séance est élaborée pour garantir une sécurité totale, sans effets secondaires ni indésirables. Nous privilégions des techniques approuvées et respectueuses de votre bien-être, afin de vous proposer un traitement à la fois sûr et efficace.
+</AccordionItem>
 
           <AccordionItem value="insurance">
             <AccordionTrigger>
               Les séances de réflexologie sont-elles remboursées par les mutuelles ?
             </AccordionTrigger>
             <AccordionContent>
-              Les séances de réflexologie laser ne sont actuellement pas prises en charge par la Sécurité Sociale. Cependant, certaines mutuelles peuvent proposer un remboursement partiel. Nous vous conseillons de vous renseigner auprès de votre mutuelle.
-            </AccordionContent>
-          </AccordionItem>
+              Selon les conditions de votre contrat d’assurance, certaines mutuelles peuvent rembourser les séances de réflexologie laser. Nous vous recommandons de consulter les détails de votre couverture et de contacter directement votre mutuelle pour confirmer votre éligibilité. Vous pourrez ainsi obtenir toutes les informations nécessaires sur les modalités de remboursement.
+            </AccordionItem>
 
           <AccordionItem value="follow-up">
             <AccordionTrigger>
               Un suivi est-il prévu après les séances de laser à {city} ?
             </AccordionTrigger>
             <AccordionContent>
-              Oui, nous assurons un suivi personnalisé après votre séance. En cas de besoin, vous bénéficiez d'une garantie de 12 mois qui vous permet de revenir pour une séance de renforcement.
-            </AccordionContent>
+Oui, notre Centre Tabac Laser, situé près de {city}, garantit un suivi personnalisé après chaque séance. Notre spécialiste thérapeute reste disponible pour répondre à vos questions et vous fournir des conseils adaptés à votre situation. Ce suivi vous offre un accompagnement continu, permettant d’évaluer vos progrès et d’ajuster les recommandations selon vos besoins.
+              </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="appointment">
@@ -51,8 +48,8 @@ export const CityFAQ = ({ city }: CityFAQProps) => {
               Comment prendre rendez-vous dans un Centre Tabac à {city} ?
             </AccordionTrigger>
             <AccordionContent>
-              Vous pouvez facilement prendre rendez-vous en ligne via notre plateforme de réservation ou en nous contactant directement par téléphone. Nous nous efforçons de vous proposer un rendez-vous dans les meilleurs délais.
-            </AccordionContent>
+              Pour réserver une séance dans votre Centre Tabac près de {city}, cliquez sur le bouton Prendre rendez-vous et choisissez le Centre qui vous convient. La prise de rendez-vous en ligne est simple et ne prend que quelques minutes. Si vous avez des questions, vous pouvez également joindre le Centre par téléphone ou par e-mail.
+</AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>
