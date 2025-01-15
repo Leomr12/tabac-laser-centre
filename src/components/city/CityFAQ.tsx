@@ -8,8 +8,8 @@ export const CityFAQ = ({ city }: CityFAQProps) => {
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8">Questions fréquentes</h2>
-        <Accordion type="single" collapsible className="max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold mb-8 text-left">Questions fréquentes</h2>
+        <Accordion type="single" collapsible className="max-w-3xl text-left">
           <AccordionItem value="duration">
             <AccordionTrigger>
               Quelle est la durée d'une séance de sevrage tabagique à {city} ?

@@ -7,7 +7,7 @@ interface CityDiscoveryProps {
 
 export const CityDiscovery = ({ city }: CityDiscoveryProps) => {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden container mx-auto mt-16">
       <div className="grid md:grid-cols-2 gap-8">
         <div className="p-8">
           <h2 className="text-3xl font-bold mb-6">
@@ -27,7 +27,7 @@ export const CityDiscovery = ({ city }: CityDiscoveryProps) => {
             </Button>
           </div>
         </div>
-        <div className="relative h-[400px] bg-gray-100">
+        <div className="relative flex items-center h-full bg-gray-100">
           <img
             src="https://images.unsplash.com/photo-1483058712412-4245e9b90334"
             alt="Centre anti-tabac moderne"
