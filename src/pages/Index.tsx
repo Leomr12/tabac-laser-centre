@@ -15,7 +15,7 @@ const Index = () => {
         <title>Arrêter de fumer en 1 séance - Centre Tabac Laser | Anti-Tabac</title>
         <meta
           name="description"
-          content="Arrêter de fumer en 1 séance avec nos Centres Anti-Tabac. Dites Stop au Tabac avec un sevrage tabagique réussi au Laser en 1 séance !"
+          content="Votre sevrage tabagique en une séance au Laser avec Centre-Tabac Laser !"
         />
       </Helmet>
 
