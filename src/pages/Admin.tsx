@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Eye, Zap, Search, Settings, Plus, Trash2 } from "lucide-react";
+import { Eye, Zap, Search, Settings, Plus, Trash2, BarChart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import AnalyticsStats from "@/components/admin/AnalyticsStats";
 
 interface City {
   name: string;
@@ -124,6 +125,7 @@ const Admin = () => {
         <TabsList>
           <TabsTrigger value="cities">Villes</TabsTrigger>
           <TabsTrigger value="auto">Référencement automatique</TabsTrigger>
+          <TabsTrigger value="analytics">Statistiques</TabsTrigger>
           <TabsTrigger value="settings">Réglages</TabsTrigger>
         </TabsList>
 
@@ -186,6 +188,10 @@ const Admin = () => {
               différentes clés API pour optimiser le référencement.
             </p>
           </div>
+        </TabsContent>
+
+        <TabsContent value="analytics">
+          <AnalyticsStats />
         </TabsContent>
 
         <TabsContent value="settings">
