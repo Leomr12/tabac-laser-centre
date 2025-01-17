@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { DateRange } from "react-day-picker";
+import { BetaAnalyticsDataClient } from '@google-analytics/data';
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   LineChart,
   Line,
@@ -23,6 +23,8 @@ interface AnalyticsData {
   }[];
 }
 
+const analyticsDataClient = new BetaAnalyticsDataClient();
+
 const AnalyticsStats = () => {
   const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
@@ -32,17 +34,54 @@ const AnalyticsStats = () => {
   const { data: analyticsData, isLoading } = useQuery({
     queryKey: ["analytics", date?.from, date?.to],
     queryFn: async () => {
-      // Simulation des données pour le moment
-      // À remplacer par l'appel réel à l'API Google Analytics
-      const mockData: AnalyticsData = {
-        pageViews: Math.floor(Math.random() * 10000),
-        searches: Math.floor(Math.random() * 1000),
-        dailyData: Array.from({ length: 30 }, (_, i) => ({
-          date: new Date(Date.now() - (30 - i) * 24 * 60 * 60 * 1000).toLocaleDateString(),
-          views: Math.floor(Math.random() * 1000),
-        })),
-      };
-      return mockData;
+      try {
+        const [response] = await analyticsDataClient.runReport({
+          property: `properties/10159635087`,
+          dateRanges: [
+            {
+              startDate: date?.from?.toISOString().split('T')[0] || '30daysAgo',
+              endDate: date?.to?.toISOString().split('T')[0] || 'today',
+            },
+          ],
+          dimensions: [
+            {
+              name: 'date',
+            },
+          ],
+          metrics: [
+            {
+              name: 'screenPageViews',
+            },
+            {
+              name: 'searchResultViews',
+            },
+          ],
+        });
+
+        const dailyData = response.rows?.map((row: any) => ({
+          date: row.dimensionValues[0].value,
+          views: parseInt(row.metricValues[0].value),
+        })) || [];
+
+        const totalPageViews = dailyData.reduce((sum, day) => sum + day.views, 0);
+        const totalSearches = response.rows?.reduce(
+          (sum, row) => sum + parseInt(row.metricValues[1].value),
+          0
+        ) || 0;
+
+        return {
+          pageViews: totalPageViews,
+          searches: totalSearches,
+          dailyData,
+        };
+      } catch (error) {
+        console.error('Error fetching analytics data:', error);
+        return {
+          pageViews: 0,
+          searches: 0,
+          dailyData: [],
+        };
+      }
     },
   });
 
