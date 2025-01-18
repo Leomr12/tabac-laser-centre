@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { DateRange } from "react-day-picker";
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useToast } from "@/components/ui/use-toast";
 import {
   LineChart,
   Line,
@@ -23,15 +24,28 @@ interface AnalyticsData {
   }[];
 }
 
-const analyticsDataClient = new BetaAnalyticsDataClient();
+const credentials = {
+  client_id: "615637992897-55ub7rfn0qt3cdu59gia1j9kp1ui8u1k.apps.googleusercontent.com",
+  client_secret: "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",
+  redirect_uris: ["https://centre-tabac.fr"],
+};
+
+const analyticsDataClient = new BetaAnalyticsDataClient({
+  credentials: {
+    client_email: credentials.client_id,
+    private_key: credentials.client_secret,
+  },
+  projectId: "centre-tabac",
+});
 
 const AnalyticsStats = () => {
+  const { toast } = useToast();
   const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
     to: new Date(),
   });
 
-  const { data: analyticsData, isLoading } = useQuery({
+  const { data: analyticsData, isLoading, error } = useQuery({
     queryKey: ["analytics", date?.from, date?.to],
     queryFn: async () => {
       try {
@@ -76,6 +90,11 @@ const AnalyticsStats = () => {
         };
       } catch (error) {
         console.error('Error fetching analytics data:', error);
+        toast({
+          variant: "destructive",
+          title: "Erreur",
+          description: "Impossible de récupérer les données Analytics",
+        });
         return {
           pageViews: 0,
           searches: 0,
@@ -87,6 +106,10 @@ const AnalyticsStats = () => {
 
   if (isLoading) {
     return <div>Chargement des statistiques...</div>;
+  }
+
+  if (error) {
+    return <div>Erreur lors du chargement des statistiques</div>;
   }
 
   return (
