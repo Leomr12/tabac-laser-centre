@@ -70,7 +70,7 @@ const RegionLanding = () => {
                 Arrêter de fumer en {capitalizedRegion}
               </h1>
               <p className="text-xl mb-8">
-                Votre Centre Tabac Laser en {capitalizedRegion}
+                Votre Centre Tabac Laser en {capitalizedRegion} pour dire Stop à la cigarette !
               </p>
             </div>
           </section>
