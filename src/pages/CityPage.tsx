@@ -21,30 +21,29 @@ const CityPage = () => {
     queryKey: ['nearbyCities', city],
     queryFn: async () => {
       try {
-        // First, get the details of the current city to get its coordinates
-        const cityResponse = await fetch(`https://geo.api.gouv.fr/communes?nom=${city}&fields=centre,population&boost=population&limit=1`);
+        // First, get the postal code of the current city
+        const cityResponse = await fetch(`https://geo.api.gouv.fr/communes?nom=${city}&fields=codesPostaux&limit=1`);
         const cityData = await cityResponse.json();
         
-        if (cityData.length === 0) {
-          throw new Error('City not found');
+        if (cityData.length === 0 || !cityData[0].codesPostaux?.length) {
+          throw new Error('City or postal code not found');
         }
 
-        const currentCity = cityData[0];
+        const postalCode = cityData[0].codesPostaux[0];
         
-        // Then, get nearby cities using coordinates
+        // Then, get all cities with the same postal code
         const nearbyResponse = await fetch(
-          `https://geo.api.gouv.fr/communes?lat=${currentCity.centre.coordinates[1]}&lon=${currentCity.centre.coordinates[0]}&fields=nom,population&boost=population&limit=20`
+          `https://geo.api.gouv.fr/communes?codePostal=${postalCode}&fields=nom,population&boost=population`
         );
         const nearbyData = await nearbyResponse.json();
         
         // Filter out the current city and sort by population
-        const majorCities = nearbyData
+        const citiesWithSamePostalCode = nearbyData
           .filter(c => c.nom.toLowerCase() !== city?.toLowerCase())
           .sort((a, b) => (b.population || 0) - (a.population || 0))
-          .slice(0, 12)
           .map(c => c.nom);
 
-        // Add some major regional cities if we don't have enough nearby cities
+        // Default cities in case we don't have enough nearby cities
         const defaultCities = [
           "Bordeaux", "Bergerac", "Périgueux", "Libourne",
           "Mérignac", "Pessac", "Agen", "Mont-de-Marsan",
@@ -52,7 +51,7 @@ const CityPage = () => {
         ];
 
         // Combine and ensure we have exactly 12 cities
-        const combinedCities = [...new Set([...majorCities, ...defaultCities])].slice(0, 12);
+        const combinedCities = [...new Set([...citiesWithSamePostalCode, ...defaultCities])].slice(0, 12);
         return combinedCities;
       } catch (error) {
         console.error('Error fetching nearby cities:', error);
