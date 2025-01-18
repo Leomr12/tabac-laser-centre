@@ -2,11 +2,10 @@ import { useParams, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { CityHero } from "../components/city/CityHero";
-import { CityHeroLarge } from "../components/city/CityHeroLarge";
-import { CityDiscovery } from "../components/city/CityDiscovery";
-import { CityMotivation } from "../components/city/CityMotivation";
-import { CityFAQ } from "../components/city/CityFAQ";
+import { RegionHeroLarge } from "../components/region/RegionHeroLarge";
+import { RegionDiscovery } from "../components/region/RegionDiscovery";
+import { RegionMotivation } from "../components/region/RegionMotivation";
+import { RegionFAQ } from "../components/region/RegionFAQ";
 
 const allowedRegions = [
   "guadeloupe",
@@ -70,14 +69,14 @@ const RegionLanding = () => {
                 Arrêter de fumer en {capitalizedRegion}
               </h1>
               <p className="text-xl mb-8">
-                Votre Centre Tabac Laser en {capitalizedRegion} pour dire Stop à la cigarette !
+                Votre Centre Tabac Laser en {capitalizedRegion}
               </p>
             </div>
           </section>
-          <CityHeroLarge city={capitalizedRegion} />
-          <CityDiscovery city={capitalizedRegion} />
-          <CityMotivation city={capitalizedRegion} />
-          <CityFAQ city={capitalizedRegion} />
+          <RegionHeroLarge region={capitalizedRegion} />
+          <RegionDiscovery region={capitalizedRegion} />
+          <RegionMotivation region={capitalizedRegion} />
+          <RegionFAQ region={capitalizedRegion} />
         </main>
         <Footer />
       </div>
