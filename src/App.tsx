@@ -14,6 +14,7 @@ const InformationsLegales = lazy(() => import("./pages/InformationsLegales"));
 const PolitiqueConfidentialite = lazy(() => import("./pages/PolitiqueConfidentialite"));
 const PolitiqueCookies = lazy(() => import("./pages/PolitiqueCookies"));
 const CityPage = lazy(() => import("./pages/CityPage"));
+const RegionLanding = lazy(() => import("./pages/RegionLanding"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ export function App() {
             <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
             <Route path="/politique-cookies" element={<PolitiqueCookies />} />
             <Route path="/centre-anti-tabac-laser/:city" element={<CityPage />} />
+            <Route path="/:region/centre-tabac-laser" element={<RegionLanding />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
