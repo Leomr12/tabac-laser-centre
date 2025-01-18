@@ -21,11 +21,24 @@ const CityPage = () => {
     queryKey: ['nearbyCities', city],
     queryFn: async () => {
       try {
-        const response = await fetch(`https://geo.api.gouv.fr/communes?nom=${city}&fields=nom,codesPostaux,population&boost=population&limit=12`);
-        const data = await response.json();
+        // First, get the details of the current city to get its coordinates
+        const cityResponse = await fetch(`https://geo.api.gouv.fr/communes?nom=${city}&fields=centre,population&boost=population&limit=1`);
+        const cityData = await cityResponse.json();
         
-        // Filter and sort cities by population
-        const majorCities = data
+        if (cityData.length === 0) {
+          throw new Error('City not found');
+        }
+
+        const currentCity = cityData[0];
+        
+        // Then, get nearby cities using coordinates
+        const nearbyResponse = await fetch(
+          `https://geo.api.gouv.fr/communes?lat=${currentCity.centre.coordinates[1]}&lon=${currentCity.centre.coordinates[0]}&fields=nom,population&boost=population&limit=20`
+        );
+        const nearbyData = await nearbyResponse.json();
+        
+        // Filter out the current city and sort by population
+        const majorCities = nearbyData
           .filter(c => c.nom.toLowerCase() !== city?.toLowerCase())
           .sort((a, b) => (b.population || 0) - (a.population || 0))
           .slice(0, 12)
@@ -38,11 +51,17 @@ const CityPage = () => {
           "Arcachon", "Biarritz", "Bayonne", "Pau"
         ];
 
+        // Combine and ensure we have exactly 12 cities
         const combinedCities = [...new Set([...majorCities, ...defaultCities])].slice(0, 12);
         return combinedCities;
       } catch (error) {
         console.error('Error fetching nearby cities:', error);
-        return [];
+        // Fallback to default major cities if there's an error
+        return [
+          "Bordeaux", "Bergerac", "Périgueux", "Libourne",
+          "Mérignac", "Pessac", "Agen", "Mont-de-Marsan",
+          "Arcachon", "Biarritz", "Bayonne", "Pau"
+        ];
       }
     },
   });
