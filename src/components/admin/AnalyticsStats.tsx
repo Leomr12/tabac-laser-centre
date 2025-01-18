@@ -24,16 +24,10 @@ interface AnalyticsData {
   }[];
 }
 
-const credentials = {
-  client_id: "615637992897-55ub7rfn0qt3cdu59gia1j9kp1ui8u1k.apps.googleusercontent.com",
-  client_secret: "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",
-  redirect_uris: ["https://centre-tabac.fr"],
-};
-
 const analyticsDataClient = new BetaAnalyticsDataClient({
   credentials: {
-    client_email: credentials.client_id,
-    private_key: credentials.client_secret,
+    client_email: "615637992897-55ub7rfn0qt3cdu59gia1j9kp1ui8u1k@developer.gserviceaccount.com",
+    private_key: "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",
   },
   projectId: "centre-tabac",
 });
