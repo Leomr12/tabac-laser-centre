@@ -15,7 +15,7 @@ const CityPage = () => {
   const capitalizedCity = city ? city.split('-').map(word => 
     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
   ).join('-') : '';
-  
+
   const { data: nearbyCities = [] } = useQuery({
     queryKey: ['nearbyCities', city],
     queryFn: async () => {
@@ -110,7 +110,7 @@ const CityPage = () => {
   return (
     <>
       <Helmet>
-        <title>{`Centre Tabac Laser ${capitalizedCity} - Arrêter de fumer ${capitalizedCity}`}</title>
+        <title>{`Centre Tabac Laser ${capitalizedCity} - Arrêter de fumer à ${capitalizedCity}`}</title>
         <meta
           name="description"
           content={`Arrêtez de fumer à ${capitalizedCity} avec notre Centre Tabac Laser à ${capitalizedCity}. Pour un sevrage tabac laser réussi !`}
