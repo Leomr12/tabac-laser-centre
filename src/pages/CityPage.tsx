@@ -16,7 +16,6 @@ const CityPage = () => {
     word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
   ).join('-') : '';
   
-  // Fetch nearby cities with improved logic
   const { data: nearbyCities = [] } = useQuery({
     queryKey: ['nearbyCities', city],
     queryFn: async () => {
@@ -65,7 +64,7 @@ const CityPage = () => {
     },
   });
 
-  const jsonLd = {
+  const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": `Centre Tabac Laser ${capitalizedCity}`,
@@ -84,6 +83,30 @@ const CityPage = () => {
     }
   };
 
+  const productSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Arrêter de fumer",
+    "description": "Sevrage tabagique en 1 séance",
+    "review": {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Fred Benson"
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 4.9,
+      "reviewCount": 2627
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -94,7 +117,10 @@ const CityPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
         <script type="application/ld+json">
-          {JSON.stringify(jsonLd)}
+          {JSON.stringify(localBusinessSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
         </script>
       </Helmet>
 
